@@ -14,9 +14,9 @@ steps:
   image: plugins/docker
   settings:
     username:
-      from_secret: docker_username
+      from_secret: DOCKER_USERNAME
     password:
-      from_secret: docker_password
+      from_secret: DOCKER_PASSWORD
     repo: econocombrasil/harness-app
     tags:
       - '1.0.0'

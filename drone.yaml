@@ -1,0 +1,22 @@
+
+kind: pipeline
+type: kubernetes
+name: default
+
+steps:
+
+- name: build
+  image: golang:1.13
+  commands:
+    - "go build -o ./myapp"
+
+- name: publish  
+  image: plugins/docker
+  settings:
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    repo: econocombrasil/harness-app
+    tags:
+      - '1.0.0'

@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
-	httptrace "gopkg.in/DataDog/dd-trace-go.v1/contrib/net/http"
-	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 	"net/http"
+
+	muxtrace "gopkg.in/DataDog/dd-trace-go.v1/contrib/gorilla/mux"
+	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 )
 
 func hello(w http.ResponseWriter, req *http.Request) {
@@ -25,7 +26,7 @@ func main() {
 	tracer.Start()
 	defer tracer.Stop()
 
-	mux := httptrace.NewServeMux()
+	mux := muxtrace.NewRouter()
 	mux.HandleFunc("/hello", hello)
 	mux.HandleFunc("/headers", headers)
 

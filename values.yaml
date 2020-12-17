@@ -26,3 +26,7 @@ serviceTargetPort: 8090
 #     key1: value1
 #   secrets:
 #     key2: value2
+
+#Datadog config
+ddEnv: demo-aws
+ddVersion: ${artifact.buildNo}

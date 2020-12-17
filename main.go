@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"net/http"
+
+	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 )
 
 func hello(w http.ResponseWriter, req *http.Request) {
@@ -20,9 +22,11 @@ func headers(w http.ResponseWriter, req *http.Request) {
 }
 
 func main() {
+	tracer.Start()
 
 	http.HandleFunc("/hello", hello)
 	http.HandleFunc("/headers", headers)
 
 	http.ListenAndServe(":8090", nil)
+	defer tracer.Stop()
 }

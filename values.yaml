@@ -2,7 +2,7 @@ name: go-app
 replicas: 2
 
 image: ${artifact.metadata.image}
-dockercfg: ${artifact.source.dockerconfig}
+#dockercfg: ${artifact.source.dockerconfig}
 
 createNamespace: true
 namespace: go-app

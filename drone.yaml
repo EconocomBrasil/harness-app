@@ -18,7 +18,7 @@ steps:
       from_secret: DOCKER_PASSWORD
     repo: econocombrasil/harness-app
     tags:
-      - '2.0.5'
+      - '2.0.6'
       - 'latest'
 
 - name: harness-deploy
@@ -33,5 +33,5 @@ steps:
     harnesswebhookid: 
       from_secret: harness_webhookid
     harnessartifactname: "econocombrasil_harness-app"
-    artifactversion: "2.0.5"
+    artifactversion: "2.0.6"
     harnessservicename: "Go App"
